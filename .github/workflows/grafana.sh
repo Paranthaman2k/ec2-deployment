@@ -1,5 +1,9 @@
 #!/bin/bash
+
+chmod +x /path/to/install_prometheus_grafana.sh  # Adjust path as needed
+
 # Update packages and install Docker
+
 sudo apt-get update -y
 sudo apt-get install -y docker.io
 
