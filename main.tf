@@ -63,6 +63,20 @@ resource "aws_security_group" "my_sg" {
     cidr_blocks = ["0.0.0.0/0"] # Allow SSH access from any IP
   }
 
+  ingress {
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Allow SSH access from any IP
+  }
+  
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Allow SSH access from any IP
+  }
+  
   egress {
     from_port   = 0
     to_port     = 0
@@ -86,3 +100,5 @@ resource "aws_instance" "my_project" {
     Name = "MyProjectInstance"
   }
 }
+
+user_data = file("install_prometheus_grafana.sh")
