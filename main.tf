@@ -95,10 +95,10 @@ resource "aws_instance" "my_project" {
   instance_type          = "t2.medium"
   subnet_id              = aws_subnet.my_subnet.id # Ensure this subnet ID is valid in your configuration
   vpc_security_group_ids = [aws_security_group.my_sg.id] # Use security group IDs here
-
+  user_data = file("install_prometheus_grafana.sh")
+  
   tags = {
     Name = "MyProjectInstance"
   }
 }
 
-user_data = file("install_prometheus_grafana.sh")
